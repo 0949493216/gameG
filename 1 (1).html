@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เกมการแก้ปัญหาสำหรับ ป.1</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Comfortaa, Sriracha, Mitr -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Sriracha&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Mitr', 'Sriracha', sans-serif;
+      background-color: #f0fdf4;
+    }
+    .font-kid {
+      font-family: 'Fredoka', 'Sriracha', sans-serif;
+    }
+    /* Wheel transition */
+    .wheel-rotate {
+      transition: transform 4s cubic-bezier(0.1, 0.8, 0.1, 1);
+    }
+    /* Floating animation for cute elements */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800">
+
+  <!-- Header Banner -->
+  <header class="bg-gradient-to-r from-pink-400 via-amber-300 to-emerald-400 p-4 shadow-md text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_20%,transparent_20%)] bg-[size:10px_10px]"></div>
+    <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-md flex justify-center items-center gap-2">
+      <span class="floating">🎒</span> เกมฝึกการแก้ปัญหาแสนสนุก ป.1 <span class="floating">🌟</span>
+    </h1>
+    <p class="text-white text-sm md:text-base font-medium mt-1">มาช่วยกันคิด แก้ปัญหา และฝึกสมองกันเถอะเด็ก ๆ !</p>
+  </header>
+
+  <!-- Start Screen: Classroom Selection (A1-A9) -->
+  <div id="start-screen" class="container mx-auto px-4 py-8 flex-grow flex flex-col justify-center items-center">
+    <div class="bg-white rounded-3xl p-8 max-w-3xl w-full text-center shadow-xl border-4 border-amber-300">
+      <div class="text-6xl md:text-7xl mb-4 floating">🏫🚌✨</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-indigo-700 mb-2">สวัสดีครับเด็ก ๆ ชั้น ป.1!</h2>
+      <p class="text-slate-600 mb-6 text-lg font-medium">ก่อนจะเข้าไปช่วยกันแก้ปัญหาแสนสนุก คุณครูและเด็ก ๆ มาเลือกห้องเรียนกันก่อนน้า 👇</p>
+      
+      <!-- Room Buttons Grid (A1-A9) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-2">
+        <!-- A1 -->
+        <button onclick="selectClassroom('A1')" class="bg-gradient-to-br from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💖</span>
+          <span class="text-base sm:text-lg">ห้อง A1</span>
+        </button>
+        <!-- A2 -->
+        <button onclick="selectClassroom('A2')" class="bg-gradient-to-br from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💛</span>
+          <span class="text-base sm:text-lg">ห้อง A2</span>
+        </button>
+        <!-- A3 -->
+        <button onclick="selectClassroom('A3')" class="bg-gradient-to-br from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💚</span>
+          <span class="text-base sm:text-lg">ห้อง A3</span>
+        </button>
+        <!-- A4 -->
+        <button onclick="selectClassroom('A4')" class="bg-gradient-to-br from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💙</span>
+          <span class="text-base sm:text-lg">ห้อง A4</span>
+        </button>
+        <!-- A5 -->
+        <button onclick="selectClassroom('A5')" class="bg-gradient-to-br from-purple-400 to-purple-500 hover:from-purple-500 hover:to-purple-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💜</span>
+          <span class="text-base sm:text-lg">ห้อง A5</span>
+        </button>
+        <!-- A6 -->
+        <button onclick="selectClassroom('A6')" class="bg-gradient-to-br from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">❤️</span>
+          <span class="text-base sm:text-lg">ห้อง A6</span>
+        </button>
+        <!-- A7 -->
+        <button onclick="selectClassroom('A7')" class="bg-gradient-to-br from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">🧡</span>
+          <span class="text-base sm:text-lg">ห้อง A7</span>
+        </button>
+        <!-- A8 -->
+        <button onclick="selectClassroom('A8')" class="bg-gradient-to-br from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">💎</span>
+          <span class="text-base sm:text-lg">ห้อง A8</span>
+        </button>
+        <!-- A9 -->
+        <button onclick="selectClassroom('A9')" class="bg-gradient-to-br from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-extrabold py-4 px-4 rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 transition-all text-xl flex flex-col items-center justify-center gap-1">
+          <span class="text-2xl">🦄</span>
+          <span class="text-base sm:text-lg">ห้อง A9</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Grid Container (Responsive: hidden by default until classroom selected) -->
+  <main id="game-main-content" class="container mx-auto px-4 py-6 flex-grow grid grid-cols-1 lg:grid-cols-4 gap-6 hidden">
+    
+    <!-- Left Column: Student Selector Wheel (สุ่มเลขที่ 1-36) -->
+    <div class="lg:col-span-1 bg-white rounded-3xl p-6 shadow-xl border-4 border-pink-200 flex flex-col items-center justify-start h-fit lg:sticky lg:top-6">
+      <div class="text-center mb-1">
+        <span class="bg-indigo-100 text-indigo-800 font-bold px-4 py-1.5 rounded-full text-sm">
+          ผู้เล่น: <span id="classroom-indicator" class="font-bold">ห้อง A1</span>
+        </span>
+      </div>
+      <h2 class="text-xl font-bold text-pink-600 mb-2 flex items-center gap-2 mt-2">
+        🎯 วงล้อสุ่มเลขที่!
+      </h2>
+      <p class="text-xs text-slate-500 mb-4 text-center">ครูสุ่มเรียกเลขที่ 1-36 ออกมาตอบคำถามข้อนี้ได้เลยจ้า</p>
+      
+      <!-- Visual Wheel Container -->
+      <div class="relative w-44 h-44 flex items-center justify-center mb-4">
+        <!-- Marker pointer -->
+        <div class="absolute -top-1 z-10 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[20px] border-t-pink-500"></div>
+        
+        <!-- Wheel Graphic -->
+        <div id="wheel" class="w-40 h-40 rounded-full border-4 border-slate-700 bg-gradient-to-tr from-yellow-300 via-pink-300 to-sky-300 shadow-inner relative overflow-hidden flex items-center justify-center wheel-rotate">
+          <!-- Center Display -->
+          <div class="w-32 h-32 rounded-full bg-white opacity-90 flex items-center justify-center shadow">
+            <span id="wheel-number" class="text-4xl font-extrabold text-indigo-600 font-kid">?</span>
+          </div>
+          <!-- Decorative lines -->
+          <div class="absolute inset-0 border-t-2 border-slate-400 opacity-20 pointer-events-none transform rotate-45"></div>
+          <div class="absolute inset-0 border-t-2 border-slate-400 opacity-20 pointer-events-none transform -rotate-45"></div>
+          <div class="absolute inset-0 border-l-2 border-slate-400 opacity-20 pointer-events-none"></div>
+          <div class="absolute inset-0 border-t-2 border-slate-400 opacity-20 pointer-events-none"></div>
+        </div>
+      </div>
+
+      <!-- Spin Button -->
+      <button onclick="spinWheel()" id="spin-btn" class="w-full bg-gradient-to-r from-pink-500 to-amber-500 hover:from-pink-600 hover:to-amber-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all text-center flex items-center justify-center gap-2 text-lg">
+        🎰 หมุนวงล้อสุ่ม!
+      </button>
+
+      <!-- Display current selector status -->
+      <div id="spin-result" class="mt-4 text-center hidden">
+        <span class="text-xs text-slate-500 block">ผู้โชคดีคือ</span>
+        <span class="text-xl font-bold text-pink-600">เลขที่ <span id="chosen-number" class="font-kid text-2xl text-slate-800"></span> 🎉</span>
+      </div>
+    </div>
+
+    <!-- Right Column: Game Workspace -->
+    <div class="lg:col-span-3 bg-white rounded-3xl p-6 shadow-xl border-4 border-sky-200 flex flex-col justify-between">
+      
+      <!-- Steps Indicator -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center mb-2">
+          <span class="bg-indigo-100 text-indigo-800 font-bold px-3 py-1 rounded-full text-sm">
+            ข้อที่ <span id="current-question-num">1</span> จาก 6
+          </span>
+          <span class="text-emerald-600 font-bold flex items-center gap-1">
+            ⭐️ คะแนนสะสม: <span id="score-display" class="font-kid text-xl">0</span>
+          </span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-3">
+          <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-indigo-500 h-3 rounded-full transition-all duration-300" style="width: 16.6%"></div>
+        </div>
+      </div>
+
+      <!-- Question Content Area -->
+      <div class="flex-grow flex flex-col">
+        <!-- Question Title & Instruction -->
+        <div class="mb-4 bg-amber-50 p-4 rounded-2xl border-2 border-amber-200">
+          <h3 id="question-title" class="text-xl md:text-2xl font-bold text-amber-800 mb-1">
+            กำลังโหลดข้อมูลเกม...
+          </h3>
+          <p id="question-desc" class="text-sm md:text-base text-slate-600 leading-relaxed">
+            คำชี้แจงคำถาม
+          </p>
+        </div>
+
+        <!-- Interactive Game Canvas / Workspace -->
+        <div id="game-workspace" class="flex-grow p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-300 min-h-[350px] flex flex-col justify-center items-center overflow-auto">
+          <!-- Game elements will be injected here by JS -->
+        </div>
+      </div>
+
+      <!-- Footer Buttons of Game Workspace -->
+      <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <!-- Message box for feedback -->
+        <div id="feedback-message" class="text-lg font-bold text-center sm:text-left min-h-[28px]">
+          <!-- Feedback messages e.g. "ถูกต้องเก่งมาก!" will appear here -->
+        </div>
+
+        <div class="flex gap-3">
+          <button id="reset-btn" onclick="resetCurrentQuestion()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2.5 px-5 rounded-full transition-colors flex items-center gap-1">
+            🔄 เริ่มข้อนี้ใหม่
+          </button>
+          <button id="next-btn" onclick="nextQuestion()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 hidden">
+            ข้อถัดไป ➡️
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Modal Congratulations (End of Game) -->
+  <div id="success-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-8 border-yellow-300 transform scale-95 transition-transform duration-300">
+      <div class="text-6xl mb-4 floating">👑🏆🎉</div>
+      <h2 class="text-3xl font-bold text-indigo-700 mb-2">สุดยอดไปเลย!</h2>
+      <p class="text-slate-600 mb-6 text-lg">เด็ก ๆ ร่วมมือกันตอบคำถามและแก้ปัญหาจนสำเร็จครบทุกข้อแล้ว!</p>
+      
+      <!-- Final Score card -->
+      <div class="bg-gradient-to-br from-indigo-50 to-pink-50 p-6 rounded-2xl mb-6 border-2 border-indigo-100">
+        <span class="text-sm text-slate-500 block uppercase tracking-wider">คะแนนรวมทั้งหมด</span>
+        <span class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600 font-kid" id="modal-final-score">0 / 6</span>
+        <div class="text-base text-slate-700 block mt-4 p-3 bg-white rounded-xl border border-dashed border-indigo-200 leading-relaxed font-semibold" id="modal-eval-text">
+          คำชมสุ่มห้องเรียน
+        </div>
+      </div>
+
+      <button onclick="restartGame()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3.5 px-6 rounded-full shadow-lg hover:shadow-xl transition-all text-lg">
+        🎮 เล่นเกมใหม่อีกครั้ง
+      </button>
+    </div>
+  </div>
+
+  <!-- Sound effect mimics (Using Web Audio API) -->
+  <script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playSound(type) {
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      const now = audioCtx.currentTime;
+      
+      if (type === 'spin') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.3);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.3);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } else if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.3);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } else if (type === 'wrong') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(120, now);
+        osc.frequency.linearRampToValueAtTime(100, now + 0.4);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.4);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } else if (type === 'success') {
+        const freqs = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+        freqs.forEach((f, index) => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.connect(g);
+          g.connect(audioCtx.destination);
+          o.type = 'sine';
+          o.frequency.setValueAtTime(f, now + (index * 0.1));
+          g.gain.setValueAtTime(0.25, now + (index * 0.1));
+          g.gain.linearRampToValueAtTime(0, now + (index * 0.1) + 0.4);
+          o.start(now + (index * 0.1));
+          o.stop(now + (index * 0.1) + 0.4);
+        });
+      }
+    }
+  </script>
+
+  <!-- Game Logic & Questions Database -->
+  <script>
+    // Global States
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let wheelSpinning = false;
+    let activeSelections = {}; // Temporary store for user selections per game
+    let selectedClassroom = ""; // Store chosen room: "A1", "A2", "A3", etc.
+
+    // Question Database
+    const questions = [
+      {
+        id: 1,
+        type: 'two-bin-sort',
+        title: "ข้อที่ 1: ช่วยกันแยกขยะเปียก และ ขยะรีไซเคิลกันเถอะ!",
+        desc: "ขยะเปียก (ถังสีเขียว) คือขยะเศษอาหารย่อยสลายได้ ส่วน ขยะรีไซเคิล (ถังสีเหลือง) คือขยะที่สามารถนำกลับมาทำประโยชน์ใหม่ได้ (เช่น ขวดพลาสติก แก้ว กระดาษ โลหะ)",
+        bins: [
+          { id: 'wet', label: 'ขยะเปียก (เศษอาหาร)', colorClass: 'bg-emerald-600 text-white border-emerald-400', emoji: '🟢' },
+          { id: 'recycle', label: 'ขยะรีไซเคิล (นำกลับมาใช้ใหม่)', colorClass: 'bg-amber-500 text-white border-amber-300', emoji: '🟡' }
+        ],
+        items: [
+          { id: 'banana', name: 'เปลือกกล้วย', emoji: '🍌', correctBin: 'wet' },
+          { id: 'plastic-bottle', name: 'ขวดพลาสติก', emoji: '🧴', correctBin: 'recycle' },
+          { id: 'apple-core', name: 'แกนแอปเปิ้ล', emoji: '🍎', correctBin: 'wet' },
+          { id: 'paper-box', name: 'กล่องกระดาษ', emoji: '📦', correctBin: 'recycle' },
+          { id: 'fish-bone', name: 'เศษก้างปลา', emoji: '🐟', correctBin: 'wet' },
+          { id: 'soda-can', name: 'กระป๋องน้ำอัดลม', emoji: '🥫', correctBin: 'recycle' }
+        ]
+      },
+      {
+        id: 2,
+        type: 'two-bin-sort',
+        title: "ข้อที่ 2: มาคัดแยกขยะทั่วไป และ ขยะอันตรายกันต่อ!",
+        desc: "ขยะทั่วไป (ถังสีน้ำเงิน) คือขยะย่อยสลายยากและไม่คุ้มค่ารีไซเคิล ส่วน ขยะอันตราย (ถังสีแดง) คือขยะที่มีสารพิษหรือสารเคมีปนเปื้อน ต้องทิ้งอย่างระมัดระวังนะเด็กๆ",
+        bins: [
+          { id: 'general', label: 'ขยะทั่วไป (สีน้ำเงิน)', colorClass: 'bg-sky-600 text-white border-sky-400', emoji: '🔵' },
+          { id: 'hazardous', label: 'ขยะอันตราย (สีแดง)', colorClass: 'bg-rose-600 text-white border-rose-400', emoji: '🔴' }
+        ],
+        items: [
+          { id: 'candy-wrap', name: 'ซองขนมพลาสติก', emoji: '🍬', correctBin: 'general' },
+          { id: 'battery', name: 'ถ่านไฟฉายเก่า', emoji: '🔋', correctBin: 'hazardous' },
+          { id: 'tissue', name: 'กระดาษทิชชูเปื้อน', emoji: '🧻', correctBin: 'general' },
+          { id: 'spray-can', name: 'กระป๋องสเปรย์ยาฆ่าแมลง', emoji: '💨', correctBin: 'hazardous' },
+          { id: 'broken-lamp', name: 'หลอดไฟที่แตกแล้ว', emoji: '💡', correctBin: 'hazardous' },
+          { id: 'plastic-bag', name: 'ถุงพลาสติกหิ้ว', emoji: '🛍️', correctBin: 'general' }
+        ]
+      },
+      {
+        id: 3,
+        type: 'two-bin-sort',
+        title: "ข้อที่ 3: คัดแยกวัสดุที่ 'รีไซเคิลประดิษฐ์ของเล่นได้'!",
+        desc: "ช่วยแยกแยะระหว่าง 'วัสดุที่เก็บไว้ประดิษฐ์ของเล่นหรือของใช้ใหม่ได้' กับ 'ขยะที่ไม่ควรเก็บไว้แล้ว (ต้องทิ้งทันที)' เพื่อช่วยลดขยะโลกกันนะครับ",
+        bins: [
+          { id: 'reusable', label: 'เก็บไว้ประดิษฐ์ได้ ✨', colorClass: 'bg-purple-600 text-white border-purple-400', emoji: '🎨' },
+          { id: 'discard', label: 'ขยะที่ต้องทิ้งเลย 🗑️', colorClass: 'bg-stone-500 text-white border-stone-400', emoji: '🚮' }
+        ],
+        items: [
+          { id: 'toilet-roll', name: 'แกนกระดาษชำระ', emoji: '🧻', correctBin: 'reusable' },
+          { id: 'dirty-plate', name: 'จานกระดาษเลอะแกง', emoji: '🍽️', correctBin: 'discard' },
+          { id: 'plastic-cap', name: 'ฝาขวดน้ำพลาสติก', emoji: '🟡', correctBin: 'reusable' },
+          { id: 'wet-wipe', name: 'ทิชชูเปียกที่ใช้แล้ว', emoji: '🧼', correctBin: 'discard' },
+          { id: 'milk-carton', name: 'กล่องนม (ล้างสะอาด)', emoji: '🥛', correctBin: 'reusable' },
+          { id: 'broken-glass', name: 'เศษแก้วคมๆ ที่แตก', emoji: '🍷', correctBin: 'discard' }
+        ]
+      },
+      {
+        id: 4,
+        type: 'pack-bag',
+        title: "ข้อที่ 4: จัดกระเป๋าเป้ไปโรงเรียน!",
+        desc: "พรุ่งนี้วันจันทร์ต้องไปเรียนหนังสือ เด็กๆ ต้องเลือกเฉพาะของที่จำเป็นต้องพกใส่กระเป๋าเป้ไปโรงเรียนเท่านั้นนะ! (กดเลือกเพื่อใส่กระเป๋าหรือเอาออก)",
+        items: [
+          { id: 'book', name: 'สมุดและหนังสือเรียน', emoji: '📚', isNeeded: true, hint: 'จำเป็นสำหรับเรียนหนังสือ' },
+          { id: 'pencil-case', name: 'กล่องดินสอและสี', emoji: '✏️', isNeeded: true, hint: 'จำเป็นสำหรับการเขียน/ระบายสี' },
+          { id: 'water-bottle', name: 'กระติกน้ำดื่มสะอาด', emoji: '🍼', isNeeded: true, hint: 'จำเป็นสำหรับดื่มระหว่างวัน' },
+          { id: 'teddy', name: 'ตุ๊กตาหมีตัวใหญ่', emoji: '🧸', isNeeded: false, hint: 'ไม่ต้องเอาไป เพราะทำให้หนักกระเป๋าเกินไป' },
+          { id: 'gameboy', name: 'เครื่องเล่นเกมพกพา', emoji: '🎮', isNeeded: false, hint: 'ห้ามนำไปเล่นที่โรงเรียนในเวลารียน' },
+          { id: 'spoon', name: 'ช้อนส้อมส่วนตัว', emoji: '🍴', isNeeded: true, hint: 'จำเป็นสำหรับการทานอาหารเที่ยงอย่างสะอาด' },
+          { id: 'frying-pan', name: 'กระทะทำอาหาร', emoji: '🍳', isNeeded: false, hint: 'คุณครูมีอุปกรณ์ครัวให้ ไม่ต้องพกไปเองนะจ๊ะ' }
+        ]
+      },
+      {
+        id: 5,
+        type: 'step-ordering',
+        title: "ข้อที่ 5: ลำดับขั้นตอนการแต่งกายไปโรงเรียน 🧦",
+        desc: "เอ๊ะ! น้องอิ่มเอมตื่นเช้ามาเพิ่งอาบน้ำเสร็จ จะต้องสวมเสื้อผ้าไปโรงเรียนอย่างไรก่อนหลังดีนะ? ช่วยเรียงลำดับขั้นตอน (ตั้งแต่ 1 ถึง 4) ให้ถูกต้องทีจ้า",
+        steps: [
+          { id: 'underwear', name: 'สวมชุดชั้นใน (กางเกงใน)', emoji: '🩲', correctOrder: 1 },
+          { id: 'shirt-pants', name: 'สวมเสื้อนักเรียนและกางเกง/กระโปรง', emoji: '👕', correctOrder: 2 },
+          { id: 'socks', name: 'สวมถุงเท้านักเรียน', emoji: '🧦', correctOrder: 3 },
+          { id: 'shoes', name: 'สวมรองเท้านักเรียนและผูกเชือก', emoji: '👟', correctOrder: 4 }
+        ]
+      },
+      {
+        id: 6,
+        type: 'grid-pathfinding',
+        title: "ข้อที่ 6: พาน้องเหมียวกลับบ้านอย่างปลอดภัย 🐱",
+        desc: "ช่วยป้อนทิศทาง 'ลูกศร' ลำดับเส้นทางให้น้องเหมียวเดินหลบก้อนหินพายุฝน แล้วกลับเข้าบ้านแสนรักให้ปลอดภัยด้วยนะจ๊ะ! (คลิกเลือกปุ่มลูกศรเพื่อกำหนดคำสั่งเดินทีละก้าว)",
+        gridSize: { cols: 4, rows: 4 },
+        start: { x: 0, y: 3 }, // Bottom left
+        end: { x: 3, y: 0 }, // Top right
+        obstacles: [
+          { x: 1, y: 1 },
+          { x: 2, y: 2 },
+          { x: 1, y: 3 }
+        ],
+        solutionLength: 6
+      }
+    ];
+
+    // Classroom select controller
+    function selectClassroom(roomCode) {
+      selectedClassroom = "ห้อง " + roomCode;
+      
+      // Update Classroom label indicator in the game UI
+      document.getElementById('classroom-indicator').innerText = selectedClassroom;
+      
+      // Hide selection screen, show main game UI
+      document.getElementById('start-screen').classList.add('hidden');
+      document.getElementById('game-main-content').classList.remove('hidden');
+      
+      // Start loading from the first question
+      loadQuestion(0);
+      playSound('correct');
+    }
+
+    // Load question UI and properties
+    function loadQuestion(index) {
+      currentQuestionIndex = index;
+      activeSelections = {}; // Clear temp stores
+      
+      // Update basic status displays
+      document.getElementById('current-question-num').innerText = index + 1;
+      document.getElementById('progress-bar').style.width = `${((index + 1) / questions.length) * 100}%`;
+      
+      const q = questions[index];
+      document.getElementById('question-title').innerText = q.title;
+      document.getElementById('question-desc').innerText = q.desc;
+      
+      // Hide feedback & next button
+      const feedback = document.getElementById('feedback-message');
+      feedback.innerText = '';
+      feedback.className = "text-lg font-bold text-center sm:text-left min-h-[28px]";
+      document.getElementById('next-btn').classList.add('hidden');
+
+      // Clear previous workspace content
+      const workspace = document.getElementById('game-workspace');
+      workspace.innerHTML = '';
+
+      // Load Game depending on type
+      if (q.type === 'two-bin-sort') {
+        buildTwoBinSortGame(q, workspace);
+      } else if (q.type === 'pack-bag') {
+        buildPackBagGame(q, workspace);
+      } else if (q.type === 'step-ordering') {
+        buildStepOrderingGame(q, workspace);
+      } else if (q.type === 'grid-pathfinding') {
+        buildGridPathfindingGame(q, workspace);
+      }
+    }
+
+    // Reset current question status
+    function resetCurrentQuestion() {
+      loadQuestion(currentQuestionIndex);
+    }
+
+    // Spin Student Selector Wheel (1-36)
+    function spinWheel() {
+      if (wheelSpinning) return;
+      wheelSpinning = true;
+      playSound('spin');
+
+      const wheel = document.getElementById('wheel');
+      const numDisplay = document.getElementById('wheel-number');
+      const spinBtn = document.getElementById('spin-btn');
+      const resultDiv = document.getElementById('spin-result');
+      const chosenSpan = document.getElementById('chosen-number');
+
+      spinBtn.disabled = true;
+      spinBtn.innerText = "กำลังสุ่ม...";
+      resultDiv.classList.add('hidden');
+
+      // Generate random angles to simulate physical spin
+      const baseSpins = 4 * 360; // 4 full rounds
+      const randomAngle = Math.floor(Math.random() * 360);
+      const totalRotation = baseSpins + randomAngle;
+
+      wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+      // Simulate ticking sounds while turning
+      let ticks = 0;
+      const interval = setInterval(() => {
+        if (ticks < 12) {
+          playSound('spin');
+          numDisplay.innerText = Math.floor(Math.random() * 36) + 1;
+          ticks++;
+        }
+      }, 300);
+
+      // Final Land on target number
+      setTimeout(() => {
+        clearInterval(interval);
+        const finalNumber = Math.floor(Math.random() * 36) + 1;
+        numDisplay.innerText = finalNumber;
+        chosenSpan.innerText = finalNumber;
+        
+        resultDiv.classList.remove('hidden');
+        spinBtn.disabled = false;
+        spinBtn.innerText = "🎰 หมุนวงล้อสุ่ม!";
+        wheelSpinning = false;
+        
+        playSound('correct');
+      }, 4000);
+    }
+
+    // ==========================================
+    // GAME TYPE 1: Two Bin Sort (แยกขยะ)
+    // ==========================================
+    function buildTwoBinSortGame(q, workspace) {
+      activeSelections = {};
+
+      const container = document.createElement('div');
+      container.className = "w-full flex flex-col items-center gap-6";
+
+      // Items Row
+      const itemsContainer = document.createElement('div');
+      itemsContainer.id = "items-pool";
+      itemsContainer.className = "flex flex-wrap justify-center gap-3 w-full p-4 bg-white/70 rounded-2xl border border-slate-200 min-h-[100px]";
+
+      q.items.forEach(item => {
+        const itemEl = document.createElement('div');
+        itemEl.id = `item-${item.id}`;
+        itemEl.className = "bg-white p-3 rounded-2xl shadow border-2 border-slate-300 hover:border-indigo-400 cursor-pointer transition-all duration-200 flex flex-col items-center justify-center w-24 h-24 select-none transform hover:-translate-y-1 active:scale-95";
+        itemEl.innerHTML = `
+          <span class="text-4xl mb-1">${item.emoji}</span>
+          <span class="text-xs text-center font-bold font-sans">${item.name}</span>
+        `;
+        
+        itemEl.onclick = () => {
+          selectItemToSort(item.id, q);
+        };
+
+        itemsContainer.appendChild(itemEl);
+      });
+
+      // Bins Row
+      const binsContainer = document.createElement('div');
+      binsContainer.className = "grid grid-cols-1 md:grid-cols-2 gap-4 w-full";
+
+      q.bins.forEach(bin => {
+        const binEl = document.createElement('div');
+        binEl.id = `bin-${bin.id}`;
+        binEl.className = `${bin.colorClass} border-4 rounded-3xl p-4 min-h-[160px] flex flex-col items-center justify-between shadow-lg relative transition-all duration-300`;
+        
+        binEl.innerHTML = `
+          <div class="text-center">
+            <span class="text-3xl">${bin.emoji}</span>
+            <h4 class="font-bold text-lg">${bin.label}</h4>
+          </div>
+          <div id="bin-content-${bin.id}" class="w-full flex flex-wrap gap-2 justify-center mt-3 p-2 bg-black/10 rounded-xl min-h-[80px]">
+            <span class="text-xs opacity-70 italic self-center text-center py-4 block" id="placeholder-${bin.id}">คลิกเลือกของด้านบน แล้วกดเลือกถังใบนี้</span>
+          </div>
+        `;
+
+        binEl.onclick = () => {
+          placeSelectedIntoBin(bin.id, q);
+        };
+
+        binsContainer.appendChild(binEl);
+      });
+
+      container.appendChild(itemsContainer);
+      container.appendChild(binsContainer);
+      workspace.appendChild(container);
+
+      activeSelections.selectedItemId = null;
+    }
+
+    function selectItemToSort(itemId, q) {
+      if (activeSelections.selectedItemId) {
+        const prev = document.getElementById(`item-${activeSelections.selectedItemId}`);
+        if (prev) prev.className = prev.className.replace("border-indigo-600 bg-indigo-50", "border-slate-300 bg-white");
+      }
+
+      activeSelections.selectedItemId = itemId;
+      const el = document.getElementById(`item-${itemId}`);
+      if (el) {
+        el.className = el.className.replace("border-slate-300 bg-white", "border-indigo-600 bg-indigo-50");
+      }
+    }
+
+    // Place into bin
+    function placeSelectedIntoBin(binId, q) {
+      const itemId = activeSelections.selectedItemId;
+      if (!itemId) {
+        showFeedback("กรุณาคลิกเลือกสิ่งของด้านบนก่อนนะจ๊ะ! แล้วค่อยเลือกถังขยะ 🗑️", "text-amber-600");
+        return;
+      }
+
+      activeSelections[itemId] = binId;
+
+      const itemEl = document.getElementById(`item-${itemId}`);
+      const binContent = document.getElementById(`bin-content-${binId}`);
+      const placeholder = document.getElementById(`placeholder-${binId}`);
+
+      if (placeholder) placeholder.classList.add('hidden');
+
+      binContent.appendChild(itemEl);
+      itemEl.className = "bg-white/90 p-2 rounded-xl shadow border border-slate-300 flex items-center gap-1 text-slate-800 scale-90 w-auto h-auto px-3 select-none pointer-events-none";
+      itemEl.innerHTML = `
+        <span class="text-xl">${q.items.find(i => i.id === itemId).emoji}</span>
+        <span class="text-xs font-bold">${q.items.find(i => i.id === itemId).name}</span>
+      `;
+
+      activeSelections.selectedItemId = null;
+      checkTwoBinSortCompletion(q);
+    }
+
+    function checkTwoBinSortCompletion(q) {
+      const sortedCount = q.items.filter(item => activeSelections[item.id]).length;
+      
+      if (sortedCount === q.items.length) {
+        let allCorrect = true;
+        q.items.forEach(item => {
+          if (activeSelections[item.id] !== item.correctBin) {
+            allCorrect = false;
+          }
+        });
+
+        if (allCorrect) {
+          playSound('correct');
+          showFeedback("ยอดเยี่ยมมากเลยครับ! แยกขยะประเภทต่างๆ ได้ถูกต้องหมดเลย 🌟", "text-emerald-600");
+          score += 1;
+          document.getElementById('score-display').innerText = score;
+          document.getElementById('next-btn').classList.remove('hidden');
+        } else {
+          playSound('wrong');
+          showFeedback("เอ๊ะ! มีของทิ้งผิดถังอยู่นะจ๊ะ ลองตรวจสอบดูใหม่อีกครั้งนะ 😅", "text-rose-500");
+        }
+      }
+    }
+
+    // ==========================================
+    // GAME TYPE 2: Pack Bag (จัดกระเป๋าไปโรงเรียน)
+    // ==========================================
+    function buildPackBagGame(q, workspace) {
+      activeSelections = {};
+
+      const container = document.createElement('div');
+      container.className = "w-full flex flex-col md:flex-row gap-6 items-center";
+
+      // Items list panel
+      const itemsPanel = document.createElement('div');
+      itemsPanel.className = "w-full md:w-1/2 flex flex-col gap-3";
+      
+      const panelTitle = document.createElement('h4');
+      panelTitle.className = "text-md font-bold text-slate-600";
+      panelTitle.innerText = "กดเลือกเพื่อหยิบใส่กระเป๋า หรือ เอาออกจากกระเป๋า:";
+      itemsPanel.appendChild(panelTitle);
+
+      const itemsList = document.createElement('div');
+      itemsList.className = "grid grid-cols-2 gap-3";
+
+      q.items.forEach(item => {
+        const itemBtn = document.createElement('button');
+        itemBtn.id = `pack-item-${item.id}`;
+        itemBtn.className = "p-3 bg-white border-2 border-slate-300 rounded-2xl flex items-center gap-3 hover:border-pink-300 active:scale-95 transition-all text-left shadow-sm";
+        itemBtn.innerHTML = `
+          <span class="text-3xl">${item.emoji}</span>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold text-slate-700">${item.name}</span>
+            <span class="text-[10px] text-slate-400" id="status-label-${item.id}">อยู่นอกกระเป๋า</span>
+          </div>
+        `;
+
+        itemBtn.onclick = () => {
+          togglePackItem(item.id, q);
+        };
+
+        itemsList.appendChild(itemBtn);
+      });
+      itemsPanel.appendChild(itemsList);
+
+      // School Bag Graphic Panel
+      const bagPanel = document.createElement('div');
+      bagPanel.className = "w-full md:w-1/2 bg-indigo-50 border-4 border-indigo-200 rounded-3xl p-6 flex flex-col items-center justify-between min-h-[300px] relative shadow-inner";
+
+      bagPanel.innerHTML = `
+        <div class="text-center mb-2 z-10">
+          <span class="text-6xl floating block">🎒</span>
+          <h4 class="font-extrabold text-indigo-800 text-lg">กระเป๋านักเรียนของฉัน</h4>
+        </div>
+        
+        <div id="bag-inventory" class="w-full flex flex-wrap gap-2 justify-center items-center flex-grow p-4 bg-white/80 rounded-2xl border-2 border-dashed border-indigo-300 min-h-[140px]">
+          <p class="text-slate-400 text-xs italic text-center" id="bag-empty-msg">ไม่มีของในกระเป๋าเลย เลือกของจากด้านซ้ายเลย!</p>
+        </div>
+
+        <button onclick="checkBagPack('${q.id}')" class="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-all text-sm flex items-center justify-center gap-1">
+          ✅ ตรวจความเรียบร้อยกระเป๋า
+        </button>
+      `;
+
+      container.appendChild(itemsPanel);
+      container.appendChild(bagPanel);
+      workspace.appendChild(container);
+    }
+
+    function togglePackItem(itemId, q) {
+      if (activeSelections[itemId]) {
+        activeSelections[itemId] = false;
+        
+        const btn = document.getElementById(`pack-item-${itemId}`);
+        btn.className = btn.className.replace("border-pink-500 bg-pink-50", "border-slate-300 bg-white");
+        document.getElementById(`status-label-${itemId}`).innerText = "อยู่นอกกระเป๋า";
+        
+        const insideItem = document.getElementById(`inside-${itemId}`);
+        if (insideItem) insideItem.remove();
+      } else {
+        activeSelections[itemId] = true;
+        
+        const btn = document.getElementById(`pack-item-${itemId}`);
+        btn.className = "p-3 bg-pink-50 border-2 border-pink-500 rounded-2xl flex items-center gap-3 hover:border-pink-300 active:scale-95 transition-all text-left shadow-sm";
+        document.getElementById(`status-label-${itemId}`).innerText = "อยู่ในกระเป๋าแล้ว 🎒";
+
+        const bagInventory = document.getElementById('bag-inventory');
+        const emptyMsg = document.getElementById('bag-empty-msg');
+        if (emptyMsg) emptyMsg.classList.add('hidden');
+
+        const item = q.items.find(i => i.id === itemId);
+        const insideItem = document.createElement('div');
+        insideItem.id = `inside-${itemId}`;
+        insideItem.className = "flex items-center gap-1 bg-white p-2 rounded-xl shadow border border-pink-200 text-xs font-bold floating";
+        insideItem.innerHTML = `<span>${item.emoji}</span><span>${item.name}</span>`;
+        bagInventory.appendChild(insideItem);
+      }
+
+      const hasItems = Object.values(activeSelections).some(v => v === true);
+      const emptyMsg = document.getElementById('bag-empty-msg');
+      if (!hasItems && emptyMsg) {
+        emptyMsg.classList.remove('hidden');
+      }
+    }
+
+    function checkBagPack(qId) {
+      const q = questions.find(question => question.id === parseInt(qId));
+      let isCorrect = true;
+      let mistakes = [];
+
+      q.items.forEach(item => {
+        const isPacked = !!activeSelections[item.id];
+        if (item.isNeeded && !isPacked) {
+          isCorrect = false;
+          mistakes.push(`ยังขาด "${item.name}"`);
+        } else if (!item.isNeeded && isPacked) {
+          isCorrect = false;
+          mistakes.push(`ไม่ควรหยิบ "${item.name}" ไปโรงเรียน`);
+        }
+      });
+
+      if (isCorrect) {
+        playSound('correct');
+        showFeedback("เยี่ยมเลยจ้า! เด็ก ๆ เลือกสิ่งที่จำเป็นเพื่อจัดกระเป๋าไปเรียนได้ถูกต้องแล้ว 🎒🌟", "text-emerald-600");
+        score += 1;
+        document.getElementById('score-display').innerText = score;
+        document.getElementById('next-btn').classList.remove('hidden');
+      } else {
+        playSound('wrong');
+        showFeedback(`เอ๊ะ! ลองตรวจดูอีกทีนะ: ${mistakes[0]} (${q.items.find(i => mistakes[0].includes(i.name))?.hint || ''})`, "text-rose-500");
+      }
+    }
+
+    // ==========================================
+    // GAME TYPE 3: Step Ordering (การแต่งตัวไปโรงเรียนตามลำดับ)
+    // ==========================================
+    function buildStepOrderingGame(q, workspace) {
+      activeSelections = {};
+      
+      const container = document.createElement('div');
+      container.className = "w-full flex flex-col items-center gap-6";
+
+      const stepsContainer = document.createElement('div');
+      stepsContainer.className = "grid grid-cols-1 md:grid-cols-4 gap-4 w-full";
+
+      const shuffledSteps = [...q.steps].sort(() => Math.random() - 0.5);
+
+      shuffledSteps.forEach(step => {
+        const stepCard = document.createElement('div');
+        stepCard.id = `step-card-${step.id}`;
+        stepCard.className = "bg-white p-5 rounded-3xl border-2 border-slate-300 shadow-md hover:border-amber-400 cursor-pointer flex flex-col items-center justify-between text-center min-h-[160px] transform transition-all active:scale-95";
+        
+        stepCard.innerHTML = `
+          <div class="flex flex-col items-center">
+            <span class="text-5xl mb-2">${step.emoji}</span>
+            <span class="text-sm font-bold text-slate-700">${step.name}</span>
+          </div>
+          <div id="step-badge-${step.id}" class="mt-3 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center border-2 border-slate-300 text-slate-400 font-extrabold text-lg">
+            ?
+          </div>
+        `;
+
+        stepCard.onclick = () => {
+          toggleStepOrder(step.id, q);
+        };
+
+        stepsContainer.appendChild(stepCard);
+      });
+
+      const controls = document.createElement('div');
+      controls.className = "w-full flex flex-col sm:flex-row justify-center items-center gap-4 border-t border-slate-200 pt-4";
+      controls.innerHTML = `
+        <button onclick="checkStepOrder('${q.id}')" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all text-md flex items-center gap-1">
+          ✅ ตรวจสอบลำดับการแต่งตัว
+        </button>
+      `;
+
+      container.appendChild(stepsContainer);
+      container.appendChild(controls);
+      workspace.appendChild(container);
+    }
+
+    function toggleStepOrder(stepId, q) {
+      const assigned = Object.values(activeSelections);
+      
+      if (activeSelections[stepId]) {
+        const removedRank = activeSelections[stepId];
+        delete activeSelections[stepId];
+        
+        const card = document.getElementById(`step-card-${stepId}`);
+        card.className = card.className.replace("border-amber-500 bg-amber-50/50", "border-slate-300 bg-white");
+        
+        const badge = document.getElementById(`step-badge-${stepId}`);
+        badge.className = "mt-3 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center border-2 border-slate-300 text-slate-400 font-extrabold text-lg";
+        badge.innerText = "?";
+
+        Object.keys(activeSelections).forEach(id => {
+          if (activeSelections[id] > removedRank) {
+            activeSelections[id] -= 1;
+            document.getElementById(`step-badge-${id}`).innerText = activeSelections[id];
+          }
+        });
+      } else {
+        if (assigned.length >= 4) return;
+        
+        const nextRank = assigned.length + 1;
+        activeSelections[stepId] = nextRank;
+
+        const card = document.getElementById(`step-card-${stepId}`);
+        card.className = "bg-amber-50/50 p-5 rounded-3xl border-2 border-amber-500 shadow-md hover:border-amber-400 cursor-pointer flex flex-col items-center justify-between text-center min-h-[160px] transform transition-all active:scale-95";
+
+        const badge = document.getElementById(`step-badge-${stepId}`);
+        badge.className = "mt-3 w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center border-2 border-amber-600 text-white font-extrabold text-lg font-kid";
+        badge.innerText = nextRank;
+      }
+    }
+
+    function checkStepOrder(qId) {
+      const q = questions.find(question => question.id === parseInt(qId));
+      const totalSteps = q.steps.length;
+      const assignedCount = Object.keys(activeSelections).length;
+
+      if (assignedCount < totalSteps) {
+        showFeedback("กรุณาลำดับขั้นตอนการแต่งตัวให้ครบทั้ง 4 ขั้นตอนก่อนนะจ๊ะ!", "text-amber-600");
+        return;
+      }
+
+      let isCorrect = true;
+      q.steps.forEach(step => {
+        if (activeSelections[step.id] !== step.correctOrder) {
+          isCorrect = false;
+        }
+      });
+
+      if (isCorrect) {
+        playSound('correct');
+        showFeedback("ถูกต้องแล้วครับ! เราต้องใส่ชุดชั้นใน เสื้อนักเรียน ถุงเท้า และรองเท้า เรียงตามลำดับสมเหตุสมผล 👕👟✨", "text-emerald-600");
+        score += 1;
+        document.getElementById('score-display').innerText = score;
+        document.getElementById('next-btn').classList.remove('hidden');
+      } else {
+        playSound('wrong');
+        showFeedback("ลำดับขั้นตอนยังไม่ถูกต้องนะเด็กๆ ลองจัดเรียงใหม่อีกครั้งครับ", "text-rose-500");
+      }
+    }
+
+    // ==========================================
+    // GAME TYPE 4: Grid Pathfinding (พาน้องเหมียวกลับบ้าน)
+    // ==========================================
+    function buildGridPathfindingGame(q, workspace) {
+      activeSelections = {
+        commands: [],
+        catPos: { ...q.start }
+      };
+
+      const container = document.createElement('div');
+      container.className = "w-full flex flex-col lg:flex-row gap-6 items-stretch";
+
+      // Left Column: Interactive Grid Map
+      const gridWrapper = document.createElement('div');
+      gridWrapper.className = "w-full lg:w-1/2 flex flex-col items-center justify-center bg-sky-50 p-4 rounded-3xl border border-sky-200";
+
+      const gridEl = document.createElement('div');
+      gridEl.id = "game-grid";
+      gridEl.className = "grid grid-cols-4 grid-rows-4 gap-2 bg-slate-700 p-2.5 rounded-2xl w-full max-w-[280px] aspect-square relative";
+      
+      for (let y = 0; y < q.gridSize.rows; y++) {
+        for (let x = 0; x < q.gridSize.cols; x++) {
+          const cell = document.createElement('div');
+          cell.id = `cell-${x}-${y}`;
+          cell.className = "bg-sky-100 rounded-lg flex items-center justify-center text-2xl relative select-none font-sans";
+          
+          if (x === q.start.x && y === q.start.y) {
+            cell.className += " border-2 border-indigo-500 bg-amber-100";
+            cell.innerHTML = `<span class="floating" id="grid-cat-avatar">🐱</span>`;
+          } else if (x === q.end.x && y === q.end.y) {
+            cell.className += " bg-emerald-100 border-2 border-dashed border-emerald-500";
+            cell.innerHTML = `🏠`;
+          } else if (q.obstacles.some(ob => ob.x === x && ob.y === y)) {
+            cell.className += " bg-slate-300";
+            cell.innerHTML = `🪨`;
+          }
+          gridEl.appendChild(cell);
+        }
+      }
+      gridWrapper.appendChild(gridEl);
+
+      // Right Column: Controls Panel
+      const controlsWrapper = document.createElement('div');
+      controlsWrapper.className = "w-full lg:w-1/2 flex flex-col justify-between gap-4";
+
+      const sequencesBox = document.createElement('div');
+      sequencesBox.className = "bg-white p-4 rounded-2xl border border-slate-200 flex-grow flex flex-col min-h-[140px]";
+      sequencesBox.innerHTML = `
+        <h4 class="text-sm font-bold text-slate-500 mb-2">ชุดคำสั่งพาเหมียวกลับบ้าน:</h4>
+        <div id="command-list" class="flex flex-wrap gap-2 items-center flex-grow">
+          <p class="text-xs text-slate-400 italic" id="empty-cmd-msg">เลือกทิศทางด้านล่างเพื่อเพิ่มกล่องคำสั่ง</p>
+        </div>
+      `;
+
+      const keysBox = document.createElement('div');
+      keysBox.className = "flex flex-col gap-2";
+      keysBox.innerHTML = `
+        <div class="text-xs font-bold text-center text-slate-500 mb-1">เลือกคำสั่งทิศทาง:</div>
+        <div class="flex justify-center gap-2">
+          <button onclick="addDirectionCommand('up')" class="w-12 h-12 bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold rounded-2xl text-xl active:scale-95 transition-all flex items-center justify-center shadow-md">⬆️</button>
+        </div>
+        <div class="flex justify-center gap-2">
+          <button onclick="addDirectionCommand('left')" class="w-12 h-12 bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold rounded-2xl text-xl active:scale-95 transition-all flex items-center justify-center shadow-md">⬅️</button>
+          <button onclick="addDirectionCommand('down')" class="w-12 h-12 bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold rounded-2xl text-xl active:scale-95 transition-all flex items-center justify-center shadow-md">⬇️</button>
+          <button onclick="addDirectionCommand('right')" class="w-12 h-12 bg-indigo-500 hover:bg-indigo-600 text-white font-extrabold rounded-2xl text-xl active:scale-95 transition-all flex items-center justify-center shadow-md">➡️</button>
+        </div>
+      `;
+
+      const actionsBox = document.createElement('div');
+      actionsBox.className = "flex gap-2 mt-2";
+      actionsBox.innerHTML = `
+        <button onclick="runCatPathfinding('${q.id}')" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-full shadow-md transition-all text-sm flex items-center justify-center gap-1">
+          🚀 เริ่มทำงาน (Run)
+        </button>
+      `;
+
+      controlsWrapper.appendChild(sequencesBox);
+      controlsWrapper.appendChild(keysBox);
+      controlsWrapper.appendChild(actionsBox);
+
+      container.appendChild(gridWrapper);
+      container.appendChild(controlsWrapper);
+      workspace.appendChild(container);
+    }
+
+    function addDirectionCommand(dir) {
+      if (activeSelections.commands.length >= 8) {
+        showFeedback("ใช้คำสั่งสูงสุดได้แค่ 8 ขั้นตอนนะจ๊ะเด็กๆ", "text-amber-600");
+        return;
+      }
+      
+      activeSelections.commands.push(dir);
+      playSound('spin');
+
+      const listEl = document.getElementById('command-list');
+      const emptyMsg = document.getElementById('empty-cmd-msg');
+      if (emptyMsg) emptyMsg.classList.add('hidden');
+
+      const block = document.createElement('div');
+      block.id = `cmd-block-${activeSelections.commands.length - 1}`;
+      
+      let dirEmoji = '';
+      if (dir === 'up') dirEmoji = '⬆️ เดินขึ้น';
+      if (dir === 'down') dirEmoji = '⬇️ เดินลง';
+      if (dir === 'left') dirEmoji = '⬅️ เดินซ้าย';
+      if (dir === 'right') dirEmoji = '➡️ เดินขวา';
+
+      block.className = "bg-indigo-50 border-2 border-indigo-400 p-2 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-1 shadow-sm";
+      block.innerHTML = `
+        <span>${dirEmoji}</span>
+        <button onclick="removeCommand(${activeSelections.commands.length - 1})" class="text-rose-500 font-extrabold ml-1 hover:text-rose-700">×</button>
+      `;
+      listEl.appendChild(block);
+    }
+
+    function removeCommand(index) {
+      activeSelections.commands.splice(index, 1);
+      const listEl = document.getElementById('command-list');
+      listEl.innerHTML = '';
+      
+      if (activeSelections.commands.length === 0) {
+        listEl.innerHTML = `<p class="text-xs text-slate-400 italic" id="empty-cmd-msg">เลือกทิศทางด้านล่างเพื่อเพิ่มกล่องคำสั่ง</p>`;
+        return;
+      }
+
+      activeSelections.commands.forEach((dir, idx) => {
+        const block = document.createElement('div');
+        block.id = `cmd-block-${idx}`;
+        let dirEmoji = '';
+        if (dir === 'up') dirEmoji = '⬆️ เดินขึ้น';
+        if (dir === 'down') dirEmoji = '⬇️ เดินลง';
+        if (dir === 'left') dirEmoji = '⬅️ เดินซ้าย';
+        if (dir === 'right') dirEmoji = '➡️ เดินขวา';
+
+        block.className = "bg-indigo-50 border-2 border-indigo-400 p-2 rounded-xl text-xs font-bold text-slate-800 flex items-center gap-1 shadow-sm";
+        block.innerHTML = `
+          <span>${dirEmoji}</span>
+          <button onclick="removeCommand(${idx})" class="text-rose-500 font-extrabold ml-1 hover:text-rose-700">×</button>
+        `;
+        listEl.appendChild(block);
+      });
+    }
+
+    function runCatPathfinding(qId) {
+      const q = questions.find(question => question.id === parseInt(qId));
+      const commands = activeSelections.commands;
+
+      if (commands.length === 0) {
+        showFeedback("กรุณาป้อนชุดคำสั่ง (เดินขึ้น/ลง/ซ้าย/ขวา) ให้น้องเหมียวก่อนนะจ๊ะ", "text-amber-600");
+        return;
+      }
+
+      resetGridCellsVisual(q);
+
+      let currentX = q.start.x;
+      let currentY = q.start.y;
+      let i = 0;
+
+      function simulateStep() {
+        if (i >= commands.length) {
+          if (currentX === q.end.x && currentY === q.end.y) {
+            playSound('correct');
+            showFeedback("ยินดีด้วย! น้องเหมียวกลับถึงบ้านอย่างปลอดภัยแล้ว แสนเก่งจริงๆ เลยจ้า! 🐱🏡🌟", "text-emerald-600");
+            score += 1;
+            document.getElementById('score-display').innerText = score;
+            document.getElementById('next-btn').classList.remove('hidden');
+          } else {
+            playSound('wrong');
+            showFeedback("อ้าว... น้องเหมียวยังเดินทางไปไม่ถึงบ้านเลย ลองเพิ่มหรือเปลี่ยนทิศทางดูใหม่นะจ๊ะ!", "text-rose-500");
+          }
+          return;
+        }
+
+        const move = commands[i];
+        let nextX = currentX;
+        let nextY = currentY;
+
+        if (move === 'up') nextY -= 1;
+        if (move === 'down') nextY += 1;
+        if (move === 'left') nextX -= 1;
+        if (move === 'right') nextX += 1;
+
+        if (nextX < 0 || nextX >= q.gridSize.cols || nextY < 0 || nextY >= q.gridSize.rows) {
+          playSound('wrong');
+          showFeedback("โอ๊ะโอ๊ย! น้องเหมียวชนกำแพงแผนที่เสียแล้ว ลองตรวจสอบทิศทางใหม่น้า 😿", "text-rose-500");
+          return;
+        }
+
+        if (q.obstacles.some(ob => ob.x === nextX && ob.y === nextY)) {
+          playSound('wrong');
+          showFeedback("แงงง! ชนน้องหินเข้าให้เสียแล้ว น้องเหมียวเดินต่อไปไม่ได้จ้า 🪨😿", "text-rose-500");
+          return;
+        }
+
+        const oldCell = document.getElementById(`cell-${currentX}-${currentY}`);
+        if (oldCell) {
+          if (currentX === q.start.x && currentY === q.start.y) {
+            oldCell.innerHTML = '';
+          } else {
+            oldCell.innerHTML = '🐾';
+          }
+        }
+
+        currentX = nextX;
+        currentY = nextY;
+        const newCell = document.getElementById(`cell-${currentX}-${currentY}`);
+        if (newCell) {
+          if (currentX === q.end.x && currentY === q.end.y) {
+            newCell.innerHTML = '🐱🏡';
+          } else {
+            newCell.innerHTML = '<span class="floating">🐱</span>';
+          }
+        }
+
+        playSound('spin');
+        i++;
+        setTimeout(simulateStep, 600);
+      }
+
+      simulateStep();
+    }
+
+    function resetGridCellsVisual(q) {
+      for (let y = 0; y < q.gridSize.rows; y++) {
+        for (let x = 0; x < q.gridSize.cols; x++) {
+          const cell = document.getElementById(`cell-${x}-${y}`);
+          if (cell) {
+            if (x === q.start.x && y === q.start.y) {
+              cell.innerHTML = `<span class="floating" id="grid-cat-avatar">🐱</span>`;
+            } else if (x === q.end.x && y === q.end.y) {
+              cell.innerHTML = `🏠`;
+            } else if (q.obstacles.some(ob => ob.x === x && ob.y === y)) {
+              cell.innerHTML = `🪨`;
+            } else {
+              cell.innerHTML = '';
+            }
+          }
+        }
+      }
+    }
+
+    // ==========================================
+    // UTILITIES & FLOW CONTROLLERS
+    // ==========================================
+    function showFeedback(msg, textClass) {
+      const el = document.getElementById('feedback-message');
+      el.innerText = msg;
+      el.className = `text-lg font-bold text-center sm:text-left min-h-[28px] ${textClass}`;
+    }
+
+    // Random praise generator tailored to the selected classroom
+    function getRandomPraise(classroom) {
+      const praises = [
+        "คือสุดยอดกิ่งทองใบหยกไปเลยจ้า! สามัคคีแถมยังเก่งและมีสมาธิรอบคอบดีที่สุดเลย! 👑🌟",
+        "มีพลังสมองแสนวิเศษจริง ๆ! ร่วมใจกันแก้ปัญหาได้รวดเร็วปานสายฟ้าแลบ เก่งทุกคนเลยครับ! ⚡️🧠",
+        "น่ารักแถมฉลาดล้ำเลิศ! ร่วมมือแก้ปัญหาจนสำเร็จได้แบบไม่มีสะดุด ขอปรบมือดังๆ ให้เลยจ้า! 👏🎉",
+        "แสดงพลังความสามัคคีและมีไหวพริบยอดเยี่ยมเป็นที่สุด! สมกับเป็นดาวเด่นนักแก้ปัญหา ป.1 เลยครับ! 🏆🎒",
+        "สุดแสนจะเก่งกาจและตั้งใจทำภารกิจดีเลิศ! คุณครูภูมิใจในความน่ารักและสามัคคีของทุกคนมากเลยจ้า! 😍🎈"
+      ];
+      const randomIndex = Math.floor(Math.random() * praises.length);
+      return `🎉 ว้าว! ${classroom} ${praises[randomIndex]}`;
+    }
+
+    function nextQuestion() {
+      const nextIdx = currentQuestionIndex + 1;
+      if (nextIdx < questions.length) {
+        loadQuestion(nextIdx);
+      } else {
+        playSound('success');
+        const modal = document.getElementById('success-modal');
+        document.getElementById('modal-final-score').innerText = `${score} / ${questions.length}`;
+        
+        // Show randomized customized praise based on the selected classroom
+        const finalPraise = getRandomPraise(selectedClassroom);
+        document.getElementById('modal-eval-text').innerText = finalPraise;
+
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function restartGame() {
+      // Reset Score
+      score = 0;
+      document.getElementById('score-display').innerText = score;
+      
+      // Reset selected classroom state
+      selectedClassroom = "";
+      
+      // Hide Main Game & Modal, Show Classroom selection screen
+      document.getElementById('success-modal').classList.add('hidden');
+      document.getElementById('game-main-content').classList.add('hidden');
+      document.getElementById('start-screen').classList.remove('hidden');
+      
+      // Clear current spin result
+      document.getElementById('spin-result').classList.add('hidden');
+      document.getElementById('wheel-number').innerText = "?";
+    }
+  </script>
+</body>
+</html>
